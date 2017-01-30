@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="win-1251">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{ title }}</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/blog-home.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">{{ Menu_big }}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+					{% for menu in menus %}
+                    <li>
+                        <a href="{{ menu["link"] }}">{{ menu["name"] }}</a>
+                    </li>
+					{% end %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-8">
+
+                <h1 class="page-header">
+                    {{ page_head }}
+                </h1>
+				{% for post in posts %}
+                <h2>
+                    <a href="#">{{ post["title"] }}</a>
+                </h2>
+                <p class="lead">
+                    Автор: <a href="">{{ post["autorname"] }}</a>
+                </p>
+                <p><span class="glyphicon glyphicon-time"></span> {{ post["date"] }}</p>
+                <hr>
+                <img class="img-responsive" src="http://placehold.it/900x300" alt=""> 
+                <hr>
+                <p>{{ post["preview"] }}</p>
+                <a class="btn btn-primary" href="{{ post["link"] }}">Подробно <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <hr>
+				{% end %}
+
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="#">&larr; Раньше</a>
+                    </li>
+                    <li class="next">
+                        <a href="#">Позже &rarr;</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="well">
+                    <h4>Поиск</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+				<!--
+                <div class="well">
+                    <h4>Категории</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">1</a>
+                                </li>
+                                <li><a href="#">2</a>
+                                </li>
+                                <li><a href="#">3</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">4</a>
+                                </li>
+                                <li><a href="#">5</a>
+                                </li>
+                                <li><a href="#">6</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+				-->
+                <div class="well">
+                    <h4>Инфоблок</h4>
+                    <p>Информация.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Все права защищены.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="js/jquery.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
