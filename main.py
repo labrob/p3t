@@ -16,7 +16,13 @@ class MainHandler(tornado.web.RequestHandler):
 
 class PostsHandler(tornado.web.RequestHandler):
     def get(self):
-        html = Template(open("templation/index.html", "r").read()).generate()
+        html = Template(open("templation/header.html", "r").read() + open("templation/posts.html", "r").read() + open(
+            "templation/footer.html", "r").read()).generate(
+            title="Мой блог",
+            Menu_big="Главная страница",
+            menus=[{'name': "Новости", 'link': "l1"}, {'name': "Статьи", 'link': "l1"},
+                   {'name': "Обратная связь", 'link': "l1"}],
+        )
         self.write(html)
 
 if __name__ == "__main__":
