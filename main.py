@@ -5,7 +5,7 @@ import os
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        html = Template(open("templation/index.html", "r").read()).generate(
+        html = Template(open("templation/header.html", "r").read() + open("templation/index.html", "r").read() + open("templation/footer.html", "r").read()).generate(
             title="Мой блог",
             Menu_big="Главная страница",
             menus=[{'name': "Новости", 'link': "l1"}, {'name': "Статьи", 'link': "l1"}, {'name': "Обратная связь", 'link': "l1"}],
@@ -14,12 +14,18 @@ class MainHandler(tornado.web.RequestHandler):
         )
         self.write(html)
 
+class PostsHandler(tornado.web.RequestHandler):
+    def get(self):
+        html = Template(open("templation/index.html", "r").read()).generate()
+        self.write(html)
+
 if __name__ == "__main__":
     app = tornado.web.Application([
         (r"/css/(.*)", tornado.web.StaticFileHandler, {"path": r"templation/css"}),
         (r"/js/(.*)", tornado.web.StaticFileHandler, {"path": r"templation/js"}),
         (r"/images/(.*)", tornado.web.StaticFileHandler, {"path": r"templation/images"}),
         (r"/fonts/(.*)", tornado.web.StaticFileHandler, {"path": r"templation/fonts"}),
+        (r"/pages", PostsHandler),
         (r"/", MainHandler),
     ])
     app.listen(80)

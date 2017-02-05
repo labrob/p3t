@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="win-1251">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{ title }}</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/main-page.css" rel="stylesheet">
+    <link href="css/auth-form.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Навигация</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">{{ Menu_big }}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+					{% for menu in menus %}
+                    <li>
+                        <a href="{{ menu["link"] }}">{{ menu["name"] }}</a>
+                    </li>
+					{% end %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
