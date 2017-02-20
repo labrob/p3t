@@ -19,7 +19,7 @@ class PostsHandler(tornado.web.RequestHandler):
         html = Template(open("templation/header.html", "r").read() + open("templation/posts.html", "r").read() + open(
             "templation/footer.html", "r").read()).generate(
             title="Мой блог",
-            Menu_big="Главная страница",
+            Menu_big="Просмотр публикации...",
             menus=[{'name': "Новости", 'link': "l1"}, {'name': "Статьи", 'link': "l1"},
                    {'name': "Обратная связь", 'link': "l1"}],
         )
